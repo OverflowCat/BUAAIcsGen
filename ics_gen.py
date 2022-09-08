@@ -5,6 +5,12 @@ from urllib import parse
 username = "" # 学号
 password = "" # 密码
 
+def multi_replace(s: str, pairs: tuple[str, str]):
+    for pair in pairs:
+        s = s.replace(pair[0], pair[1])
+    return s
+
+
 def get_eai_sess() -> str:
     login_url = "https://app.buaa.edu.cn/uc/wap/login/check"
     headers = {
@@ -88,7 +94,9 @@ BEGIN:VEVENT
 DESCRIPTION:{event_description}
 DTSTART;TZID=Asia/Shanghai:{event_start}
 DTEND;TZID=Asia/Shanghai:{event_end}
-LOCATION:{klass["location"]}
+LOCATION:{multi_replace(klass["location"], [
+    ('（五）', '(五)')
+])}
 SUMMARY:{klass["course_name"]}
 BEGIN:VALARM
 TRIGGER:-PT30M
