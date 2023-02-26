@@ -1,9 +1,15 @@
 import requests
 from datetime import datetime
 from urllib import parse
+from getpass import getpass
 
 username = "" # 学号
 password = "" # 密码
+
+if username == "":
+    username = getpass("请输入学号：")
+if password == "":
+    password = getpass("请输入密码：")
 
 def multi_replace(s: str, pairs: tuple[str, str]):
     for pair in pairs:
