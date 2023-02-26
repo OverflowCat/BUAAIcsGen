@@ -1,15 +1,16 @@
 import requests
 from datetime import datetime
 from urllib import parse
-from getpass import getpass
 
 username = "" # 学号
 password = "" # 密码
 
 if username == "":
-    username = getpass("请输入学号：")
+    username = input("请输入学号：")
 if password == "":
-    password = getpass("请输入密码：")
+    password = input("请输入密码：")
+
+print(username, password)
 
 def multi_replace(s: str, pairs: tuple[str, str]):
     for pair in pairs:
@@ -21,7 +22,7 @@ def get_eai_sess() -> str:
     login_url = "https://app.buaa.edu.cn/uc/wap/login/check"
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.114.514 Safari/537.36",
     }
     data = parse.urlencode({
         "username": username,
